@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <title>Triage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+        $(".update").change(function(){
+            console.log("update")
+            criterias = $( ".update" )
+            var sum = 0
+
+            var vip = ($("#vip").val() === 'true')
+            var affected = $("#affected").val()
+            var size = $("#size").val()
+            var bizfunc = ($("#bizfunc").val() === 'true')
+            var workaround = ($("#workaround").val() === 'true')
+
+            percent = affected / size * 60
+            if (isNaN(percent) == false) { sum += percent } 
+
+            if (bizfunc) { sum += 10 }
+
+            if (workaround) { sum -= 20 }
+
+            // if a VIP, add just enough to get to 30
+            if (vip) {
+                if (sum < 30) {
+                    var additional = 30 - sum
+                    sum += additional
+                }
+                else {
+                    sum += 10
+                }
+                
+            }
+
+            console.log(sum)
+
+            if (sum < 20) {
+                $("body").css("background-color", "blue")
+                $("#resultval").text("Priority 4, your score is: " + sum)
+            }
+            if (sum >= 20 && sum < 30) {
+                $("body").css("background-color", "yellow")
+                $("#resultval").text("Priority 3, your score is: " + sum)
+            }
+            if (sum >= 30 && sum < 40) {
+                $("body").css("background-color", "orange")
+                $("#resultval").text("Priority 2, your score is: " + sum)
+            }
+            if (sum >= 40 ) {
+                $("body").css("background-color", "red")
+                $("#resultval").text("Priority 1, your score is: " + sum)
+            }
+
+        });
+    });
+
+    </script>
+</head>
+
+<body>
+    <div id="checklist">
+        Is the submitting user a VIP?
+        <select name="vip" id="vip" class="update">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+        <br><br>
+        Enter size of company?
+        <input type="number" name="size" id="size" class="update"></input>
+        <br><br>
+        How many users are affected?
+        <input type="number" name="affected" id="affected" class="update"></input>
+        <br><br>
+        Is a business function unable to be performed?
+        <select name="function" id="bizfunc" class="update">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+        <br><br>
+        Is a workaround available:
+        <select name="workaround" id="workaround" class="update" data-weight=-7>
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </div>
+    <div id="result">
+        <p id="resultval"></p>
+    </div>
+</body>
+
+</html>
