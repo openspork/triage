@@ -37,8 +37,6 @@
                 }
             }
 
-            if (workaround) { sum -= 20 }
-
             if (productivity) {
                 if (sum < 20) {
                     var additional = 20 - sum
@@ -48,6 +46,8 @@
                     sum += 10
                 }
             }
+
+            if (workaround) { sum -= 10 }
 
             if (bizfunc) {
                 if (sum < 30) {
