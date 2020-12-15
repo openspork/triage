@@ -15,12 +15,40 @@
             var bizfunc = ($("#bizfunc").val() === 'true')
             var workaround = ($("#workaround").val() === 'true')
 
-            percent = affected / size * 60
-            if (isNaN(percent) == false) { sum += percent } 
+            percent = affected / size
 
-            if (bizfunc) { sum += 10 }
+            if (percent >= .1 && percent <= .4) {
+                if (sum < 30) {
+                    var additional = 30 - sum
+                    sum += additional
+                }
+                else {
+                    sum += 10
+                }
+            }
+            else if (percent > .4) {
+                if (sum < 30) {
+                    var additional = 40 - sum
+                    sum += additional
+                }
+                else {
+                    sum += 10
+                }
+            }
+
+            // if (isNaN(percent) == false) { sum += percent } 
 
             if (workaround) { sum -= 20 }
+
+            if (bizfunc) {
+                if (sum < 30) {
+                    var additional = 30 - sum
+                    sum += additional
+                }
+                else {
+                    sum += 10
+                }
+            }
 
             if (vip) {
                 if (sum < 30) {
@@ -30,7 +58,6 @@
                 else {
                     sum += 10
                 }
-                
             }
 
             if (sum < 20) {
