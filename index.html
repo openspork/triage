@@ -7,8 +7,6 @@
         $(document).ready(function(){
 
         $(".update").change(function(){
-            console.log("update")
-            criterias = $( ".update" )
             var sum = 0
 
             var vip = ($("#vip").val() === 'true')
@@ -24,7 +22,6 @@
 
             if (workaround) { sum -= 20 }
 
-            // if a VIP, add just enough to get to 30
             if (vip) {
                 if (sum < 30) {
                     var additional = 30 - sum
@@ -35,8 +32,6 @@
                 }
                 
             }
-
-            console.log(sum)
 
             if (sum < 20) {
                 $("body").css("background-color", "blue")
