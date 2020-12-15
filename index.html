@@ -37,25 +37,13 @@
                 }
             }
 
-            if (productivity) {
-                if (sum < 20) {
-                    var additional = 20 - sum
-                    sum += additional
-                }
-                else {
-                    sum += 10
-                }
-            }
-
-            if (workaround) { sum -= 10 }
-
             if (bizfunc) {
                 if (sum < 30) {
                     var additional = 30 - sum
                     sum += additional
                 }
                 else {
-                    sum += 10
+                    sum += 5
                 }
             }
 
@@ -68,6 +56,19 @@
                     sum += 10
                 }
             }
+
+            if (productivity) {
+                if (sum < 20) {
+                    var additional = 20 - sum
+                    sum += additional
+                    console.log("sum is less than 20")
+                }
+                else {
+                    sum += 5
+                }
+            }
+
+            if (workaround) { sum -= 10 }
 
             if (sum < 20) {
                 $("body").css("background-color", "blue")
