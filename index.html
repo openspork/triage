@@ -60,18 +60,22 @@
 
             if (sum < 20) {
                 $("body").css("background-color", "blue")
+                $("body").css("color", "white")
                 $("#resultval").text("Priority 4, your score is: " + sum)
             }
             if (sum >= 20 && sum < 30) {
                 $("body").css("background-color", "yellow")
+                $("body").css("color", "black")
                 $("#resultval").text("Priority 3, your score is: " + sum)
             }
             if (sum >= 30 && sum < 40) {
                 $("body").css("background-color", "orange")
+                $("body").css("color", "black")
                 $("#resultval").text("Priority 2, your score is: " + sum)
             }
             if (sum >= 40 ) {
                 $("body").css("background-color", "red")
+                $("body").css("color", "white")
                 $("#resultval").text("Priority 1, your score is: " + sum)
             }
 
