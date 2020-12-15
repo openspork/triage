@@ -12,6 +12,7 @@
             var vip = ($("#vip").val() === 'true')
             var affected = $("#affected").val()
             var size = $("#size").val()
+            var productivity = ($("#productivity").val() === 'true')
             var bizfunc = ($("#bizfunc").val() === 'true')
             var workaround = ($("#workaround").val() === 'true')
 
@@ -37,6 +38,16 @@
             }
 
             if (workaround) { sum -= 20 }
+
+            if (productivity) {
+                if (sum < 20) {
+                    var additional = 20 - sum
+                    sum += additional
+                }
+                else {
+                    sum += 10
+                }
+            }
 
             if (bizfunc) {
                 if (sum < 30) {
@@ -93,14 +104,20 @@
             <option value="true">Yes</option>
         </select>
         <br><br>
-        Enter size of company?
+        How many users are there at the company?
         <input type="number" name="size" id="size" class="update"></input>
         <br><br>
         How many users are affected?
         <input type="number" name="affected" id="affected" class="update"></input>
         <br><br>
-        Is a business function unable to be performed?
-        <select name="function" id="bizfunc" class="update">
+        Is there an issue currently impacting productivity?
+        <select name="productivity" id="productivity" class="update">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+        <br><br>
+        Is a critical business function unable to be performed?
+        <select name="bizfunc" id="bizfunc" class="update">
             <option value="false">No</option>
             <option value="true">Yes</option>
         </select>
