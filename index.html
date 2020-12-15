@@ -18,16 +18,16 @@
 
             percent = affected / size
 
-            if (percent >= .1 && percent <= .4) {
-                if (sum < 30) {
-                    var additional = 30 - sum
+            if (percent >= .1 && percent <= .3) {
+                if (sum < 20) {
+                    var additional = 20 - sum
                     sum += additional
                 }
                 else {
                     sum += 10
                 }
             }
-            else if (percent > .4) {
+            else if (percent > .3) {
                 if (sum < 30) {
                     var additional = 40 - sum
                     sum += additional
