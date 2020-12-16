@@ -2,6 +2,15 @@
 
 <head>
     <title>Triage</title>
+    <style>
+        p {
+            display: inline
+        }
+        #issue {
+            display:none
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -61,6 +70,8 @@
             }
             // Calc productivity impact (vs. informational)
             if (productivity) {
+                $("#issue").show()
+
                 if (sum < 20) {
                     var additional = 20 - sum
                     sum += additional
@@ -106,47 +117,51 @@
 
 <body>
     <div id="checklist">
-        Is the submitting user a VIP?
-        <select name="vip" id="vip" class="update">
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-        </select>
-        <br><br>
-        How many users are there at the company?
-        <input type="number" name="size" id="size" class="update"></input>
-        <br><br>
-        How many users are affected?
-        <input type="number" name="affected" id="affected" class="update"></input>
-        <br><br>
-        Is there an issue currently impacting productivity?
-        <select name="productivity" id="productivity" class="update">
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-        </select>
-        <br><br>
-        Is the issue intermittent?
-        <select name="intermittent" id="intermittent" class="update">
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-        </select>
-        <br><br>
-        Did the issue start more than one day ago?
-        <select name="old" id="old" class="update">
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-        </select>
-        <br><br>
-        Is a critical business function unable to be performed?
-        <select name="bizfunc" id="bizfunc" class="update">
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-        </select>
-        <br><br>
-        Is a workaround available:
-        <select name="workaround" id="workaround" class="update" data-weight=-7>
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-        </select>
+        <p>
+            Is the submitting user a VIP?
+            <select name="vip" id="vip" class="update">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <br><br>
+            How many users are there at the company?
+            <input type="number" name="size" id="size" class="update"></input>
+            <br><br>
+            How many users are affected?
+            <input type="number" name="affected" id="affected" class="update"></input>
+            <br><br>
+            Is there an issue currently impacting productivity?
+            <select name="productivity" id="productivity" class="update">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <br><br>
+        </p>
+        <p id="issue">
+            Is the issue intermittent?
+            <select name="intermittent" id="intermittent" class="update">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <br><br>
+            Did the issue start more than one day ago?
+            <select name="old" id="old" class="update">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <br><br>
+            Is a critical business function unable to be performed?
+            <select name="bizfunc" id="bizfunc" class="update">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <br><br>
+            Is a workaround available:
+            <select name="workaround" id="workaround" class="update" data-weight=-7>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+        </p>
     </div>
     <div id="result">
         <p id="resultval"></p>
