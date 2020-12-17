@@ -1,12 +1,15 @@
 body {
     background-color: CadetBlue
-    }
+}
+
 p {
     display: inline
 }
+
 input {
     width: 4em;
 }
+
 #issue {
-    display:none
+    display: none
 }
