@@ -77,7 +77,7 @@ $(document).ready(function() {
         }
         // Calc productivity impact (vs. informational)
         if (productivity) {
-            $("#issue").toggle()
+            $("#issue").show()
 
             if (sum < 20) {
                 var additional = 20 - sum
@@ -85,7 +85,7 @@ $(document).ready(function() {
             } else {
                 sum += 5
             }
-        } else { $("#issue").toggle() }
+        } else { $("#issue").hide() }
         // Calc old issue
         if (old) { sum += 5 }
 
