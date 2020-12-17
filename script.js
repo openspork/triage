@@ -63,7 +63,7 @@ $(document).ready(function() {
                 var additional = 30 - sum
                 sum += additional
             } else {
-                sum += 5
+                sum += 10
             }
         }
         // Calc VIP user
